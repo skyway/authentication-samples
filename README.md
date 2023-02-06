@@ -2,7 +2,7 @@
 
 このリポジトリには、SkyWayで利用する認証情報を生成・取得するサンプルがあります。
 
-SkyWayにおける認証について、詳細は[こちら](https://skyway.ntt.comja/docs/user-guide/authentication/)をご覧ください。
+SkyWayにおける認証について、詳細は[こちら](https://skyway.ntt.com/ja/docs/user-guide/authentication/)をご覧ください。
 
 ## サーバーアプリケーション
 
