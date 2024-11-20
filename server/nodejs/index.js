@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 const crypto = require('crypto');
 
-const id = 'YourAppId'; // replace with your app id from the dashboard
-const secret = 'YourSecret'; // replace with your own secret from the dashboard
+const appId = 'YourAppId'; // replace with your app id from SkyWay Console
+const secretKey = 'YourSecretKey'; // replace with your own secret key from SkyWay Console
 
 const app = express();
 app.use(express.json());
@@ -52,42 +52,31 @@ const calculateAuthToken = (roomName, memberName, iat, exp) => {
     jti: crypto.randomUUID(),
     iat: iat,
     exp: exp,
+    version: 3,
     scope: {
-      app: {
-        id: id,
-        turn: true,
-        actions: ["read"],
-        channels: [
-          {
-            id: "*",
-            name: channelName,
-            actions: ["write"],
-            members: [
-              {
-                id: "*",
-                name: memberName,
-                actions: ["write"],
-                publication: {
-                  actions: ["write"],
-                },
-                subscription: {
-                  actions: ["write"],
-                },
-              },
-            ],
-            sfuBots: [
-              {
-                actions: ["write"],
-                forwardings: [
-                  {
-                    actions: ["write"]
-                  }
-                ]
-              }
-            ]
-          },
-        ],
+      appId: appId,
+      turn: {
+        enabled: true
       },
-    },
-  }, secret);
-}
+      analytics: {
+        enabled: true
+      },
+      rooms: [
+        {
+          id: '*',
+          name: roomName,
+          methods: ['create', 'close', 'updateMetadata'],
+          sfu: {
+            enabled: true,
+            maxSubscribersLimit: 99
+          },
+          member: {
+            id: '*',
+            name: memberName,
+            methods: ['publish', 'subscribe', 'updateMetadata']
+          }
+        }
+      ]
+    }
+  }, secretKey);
+};
