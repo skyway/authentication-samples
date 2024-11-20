@@ -23,14 +23,14 @@ window.onload = () => {
       console.log(credential);
       authToken = credential.authToken;
       document.querySelector('#result').textContent = JSON.stringify(credential, null, 2);
-      document.querySelector('#get-btn').textContent = "Done!"
+      document.querySelector('#get-btn').textContent = 'Done!';
     } else {
-      alert("Request failed: " + response.statusText);
+      alert('Request failed: ' + response.statusText);
     }
   };
 
   document.querySelector('#copy-btn').onclick = async () => {
     await navigator.clipboard.writeText(authToken);
-    document.querySelector('#copy-btn').textContent = "Copied!"
+    document.querySelector('#copy-btn').textContent = 'Copied!';
   };
 };

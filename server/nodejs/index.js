@@ -1,16 +1,16 @@
 const jwt = require('jsonwebtoken');
 const express = require('express');
-const crypto = require("crypto");
+const crypto = require('crypto');
 
 const id = 'YourAppId'; // replace with your app id from the dashboard
 const secret = 'YourSecret'; // replace with your own secret from the dashboard
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use((_, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -25,7 +25,7 @@ app.post('/authenticate', (req, res) => {
   }
 
   // Check the sessionToken for your app.
-  if(sessionToken != '4CXS0f19nvMJBYK05o3toTWtZF5Lfd2t6Ikr2lID') { 
+  if (sessionToken != '4CXS0f19nvMJBYK05o3toTWtZF5Lfd2t6Ikr2lID') {
     res.status(401).send('Authentication Failed');
   }
 
@@ -44,7 +44,7 @@ app.post('/authenticate', (req, res) => {
 });
 
 const listener = app.listen(process.env.PORT || 8080, () => {
-  console.log(`Server listening on port ${listener.address().port}`)
+  console.log(`Server listening on port ${listener.address().port}`);
 });
 
 const calculateAuthToken = (channelName, memberName, iat, exp) => {
