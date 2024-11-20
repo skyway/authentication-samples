@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 const crypto = require('crypto');
 
-const id = 'YourAppId'; // replace with your app id from the dashboard
-const secret = 'YourSecret'; // replace with your own secret from the dashboard
+const appId = 'YourAppId'; // replace with your app id from SkyWay Console
+const secretKey = 'YourSecret'; // replace with your own secret key from SkyWay Console
 
 const app = express();
 app.use(express.json());
@@ -54,7 +54,7 @@ const calculateAuthToken = (channelName, memberName, iat, exp) => {
     exp: exp,
     scope: {
       app: {
-        id: id,
+        id: appId,
         turn: true,
         actions: ['read'],
         channels: [
@@ -89,5 +89,5 @@ const calculateAuthToken = (channelName, memberName, iat, exp) => {
         ]
       }
     }
-  }, secret);
+  }, secretKey);
 };
