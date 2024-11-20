@@ -26,7 +26,7 @@ npm start
 clientディレクトリをホスティングし、ブラウザから`index.html`にアクセスしてください。
 
 ### 操作方法
-1. Channel Name、Member Nameのテキストボックスに文字列を入力します。
+1. Room Name、Member Nameのテキストボックスに文字列を入力します。
 2. Get credentialボタンを押下します。
 3. 認証情報の取得に成功すると、結果がCredentialのエリアにJSON形式で出力されます。
     - `authToken`がアプリケーションからSkyWayを利用する際に必要となります

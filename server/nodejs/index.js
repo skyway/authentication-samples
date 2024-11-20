@@ -15,11 +15,11 @@ app.use((_, res, next) => {
 });
 
 app.post('/authenticate', (req, res) => {
-  const channelName = req.body.channelName;
+  const roomName = req.body.roomName;
   const memberName = req.body.memberName;
   const sessionToken = req.body.sessionToken;
 
-  if (channelName === undefined || memberName === undefined || sessionToken === undefined) {
+  if (roomName === undefined || memberName === undefined || sessionToken === undefined) {
     res.status(400).send('Bad Request');
     return;
   }
@@ -33,11 +33,11 @@ app.post('/authenticate', (req, res) => {
   const exp = Math.floor(Date.now() / 1000) + 36000; // 10h=60*60*10
 
   const credential = {
-    channelName: channelName,
+    roomName: roomName,
     memberName: memberName,
     iat: iat,
     exp: exp,
-    authToken: calculateAuthToken(channelName, memberName, iat, exp)
+    authToken: calculateAuthToken(roomName, memberName, iat, exp)
   };
 
   res.send(credential);
@@ -47,7 +47,7 @@ const listener = app.listen(process.env.PORT || 8080, () => {
   console.log(`Server listening on port ${listener.address().port}`);
 });
 
-const calculateAuthToken = (channelName, memberName, iat, exp) => {
+const calculateAuthToken = (roomName, memberName, iat, exp) => {
   return jwt.sign({
     jti: crypto.randomUUID(),
     iat: iat,
