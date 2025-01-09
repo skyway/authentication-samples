@@ -2,7 +2,7 @@ let authToken;
 
 window.onload = () => {
   document.querySelector('#get-btn').onclick = async () => {
-    const channelName = document.querySelector('#channel-name-text').value;
+    const roomName = document.querySelector('#room-name-text').value;
     const memberName = document.querySelector('#member-name-text').value;
 
     // POST request to auth server.
@@ -13,7 +13,7 @@ window.onload = () => {
       },
       body: JSON.stringify({
         sessionToken: '4CXS0f19nvMJBYK05o3toTWtZF5Lfd2t6Ikr2lID',
-        channelName: channelName,
+        roomName: roomName,
         memberName: memberName
       })
     });
@@ -23,14 +23,14 @@ window.onload = () => {
       console.log(credential);
       authToken = credential.authToken;
       document.querySelector('#result').textContent = JSON.stringify(credential, null, 2);
-      document.querySelector('#get-btn').textContent = "Done!"
+      document.querySelector('#get-btn').textContent = 'Done!';
     } else {
-      alert("Request failed: " + response.statusText);
+      alert('Request failed: ' + response.statusText);
     }
   };
 
   document.querySelector('#copy-btn').onclick = async () => {
     await navigator.clipboard.writeText(authToken);
-    document.querySelector('#copy-btn').textContent = "Copied!"
+    document.querySelector('#copy-btn').textContent = 'Copied!';
   };
 };
