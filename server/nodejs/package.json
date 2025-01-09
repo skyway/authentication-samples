@@ -1,7 +1,7 @@
 {
   "name": "skyway-auth-server",
   "version": "1.0.0",
-  "description": "A simple server demonstating how to authenticate",
+  "description": "A simple server demonstrating how to authenticate",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,15 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skyway-internal/authentication-samples.git"
+    "url": "git+https://github.com/skyway/authentication-samples.git"
   },
   "author": "NTT Communications Corporation",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/skyway-internal/authentication-samples/issues"
-  },
   "dependencies": {
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0"
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2"
   }
 }

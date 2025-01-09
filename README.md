@@ -2,7 +2,7 @@
 
 このリポジトリには、SkyWayで利用する認証情報を生成・取得するサンプルがあります。
 
-SkyWayにおける認証について、詳細は[こちら](https://skyway.ntt.com/ja/docs/user-guide/authentication/)をご覧ください。
+SkyWayにおけるエンドユーザーの認証・認可について、詳細は[開発者ドキュメントのSkyWay Auth Tokenのページ](https://skyway.ntt.com/ja/docs/user-guide/authentication/skyway-auth-token-legacy/)をご覧ください。
 
 ## サーバーアプリケーション
 
@@ -10,11 +10,13 @@ SkyWayにおける認証について、詳細は[こちら](https://skyway.ntt.c
 
 ### NodeJSサーバー
 
-nodejsディレクトリに移動して依存ライブラリをインストールし、`npm start`コマンドで起動してください。
-8080ポートを使用します。
+server/nodejsディレクトリに移動して依存ライブラリをインストールしてください。
+次に、index.jsファイルをテキストエディタで開き、 `appId` と `secretKey` の各変数の値を自身のAppID、Secret Keyに書き換えてファイルを保存してください。
+その後、 `npm start` コマンドでサーバーを起動してください。
+サーバーは8080ポートを使用します。
 
-```
-cd nodejs
+```sh
+cd server/nodejs
 npm i
 npm start
 ```
@@ -26,6 +28,7 @@ npm start
 clientディレクトリをホスティングし、ブラウザから`index.html`にアクセスしてください。
 
 ### 操作方法
+
 1. Channel Name、Member Nameのテキストボックスに文字列を入力します。
 2. Get credentialボタンを押下します。
 3. 認証情報の取得に成功すると、結果がCredentialのエリアにJSON形式で出力されます。
@@ -34,7 +37,7 @@ clientディレクトリをホスティングし、ブラウザから`index.html
 
 ### スクリーンショット
 
-![](./docs/img/screen-shot.png) 
+![クライアントアプリケーションのスクリーンショット](./docs/img/screen-shot.png)
 
 ## 公開リポジトリの運用方針について
 
