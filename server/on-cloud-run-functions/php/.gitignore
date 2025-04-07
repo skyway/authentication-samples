@@ -1,0 +1,6 @@
+# Composer dependencies
+vendor/
+composer.lock
+
+# dotenv files
+.env
