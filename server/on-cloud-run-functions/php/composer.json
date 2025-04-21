@@ -1,0 +1,8 @@
+{
+    "require": {
+        "firebase/php-jwt": "^6.11.0",
+        "ramsey/uuid": "^4.7.6",
+        "google/cloud-functions-framework": "^1.4",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

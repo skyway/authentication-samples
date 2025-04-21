@@ -21,6 +21,26 @@ npm i
 npm start
 ```
 
+### PHPサーバー
+
+server/on-cloud-run-functions/phpディレクトリに移動して、[Composer](https://getcomposer.org/) で依存ライブラリをインストールしてください。
+次に、環境変数 `APP_ID` と `SECRET_KEY`、 `VALID_FIXED_SESSION_TOKEN` に値を設定してください。
+- `APP_ID` と `SECRET_KEY`は、それぞれ自身のApp ID、Secret Keyを設定してください。
+- `VALID_FIXED_SESSION_TOKEN`は、クライアントアプリケーションを検証する際に用いる固定値を設定してください。
+  - 後述のクライアントアプリケーションをそのまま使う場合は、[`4CXS0f19nvMJBYK05o3toTWtZF5Lfd2t6Ikr2lID`](https://github.com/skyway/authentication-samples/blob/ea675724d7458c0f765b018c1698980493f8b06b/client/index.js#L15)を設定してください。
+  - サンプルのため、クライアントアプリケーションからの[リクエストボディの sessionToken パラメーター](https://github.com/skyway/authentication-samples/blob/ea675724d7458c0f765b018c1698980493f8b06b/client/index.js#L15)と比較で検証する作りにしています。本番環境では、より高度な検証方法を用いられることが望ましいです。
+
+環境変数の設定ができない場合は、 .env.example ファイルの名前を .env に変更し、上記3変数に値を設定してファイルを保存してください。
+その後、環境変数`FUNCTION_TARGET`を設定し、`php -S localhost:8080` コマンドでローカルサーバーを起動してください。
+サーバーは8080ポートを使用します。
+
+```sh
+cd server/on-cloud-run-functions/php
+composer install
+
+FUNCTION_TARGET=main php -S localhost:8080 vendor/google/cloud-functions-framework/router.php
+```
+
 ## クライアントアプリケーション
 
 サーバーアプリケーションにリクエストを行い、認証情報を取得します。
