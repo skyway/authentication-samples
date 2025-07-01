@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/skyway/authentication-samples.git"
   },
-  "author": "NTT Communications Corporation",
+  "author": "NTT DOCOMO BUSINESS, Inc.",
   "license": "MIT",
   "dependencies": {
     "@skyway-sdk/token": "^1",
